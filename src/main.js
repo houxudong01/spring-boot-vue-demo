@@ -51,7 +51,7 @@ Vue.filter('dateFormat', function (dateStr) {
 // });
 
 // export default store;
-
+// 参考：https://www.cnblogs.com/web-record/p/9876916.html
 // 添加请求拦截器，在请求头中加token
 axios.interceptors.request.use(
   config => {

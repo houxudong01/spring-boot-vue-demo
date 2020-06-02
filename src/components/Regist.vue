@@ -87,7 +87,7 @@
             }
         },
         mounted() {
-            this.listAll()
+           // this.listAll()
         },
         methods: {
             listAll: function () {
@@ -107,7 +107,8 @@
                     console.log(response)
                     if (response.data.code == 200) {
                         that.listAll()
-                        that.$router.push({ path: decodeURIComponent('/login') });
+                        that.$router.push({ path: decodeURIComponent('/') });
+                        alert('注册成功')
                     }
 
                 }, error => {
@@ -134,7 +135,7 @@
 </script>
 
 <style scoped>
-    .demo-ruleForm {
+    /* .demo-ruleForm {
         width: 500px;
     }
 
@@ -142,5 +143,5 @@
         padding-top: 250px;
         text-align: center;
         padding-left: 500px;
-    }
+    } */
 </style>

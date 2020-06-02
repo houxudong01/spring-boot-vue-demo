@@ -1,4 +1,7 @@
 # spring-boot-vue-demo
+## Vue学习小Demo，目前只做了简单的注册登录功能
+## 对应后端SpringBoot项目 [spring-boot-demo](https://github.com/houxudong01/spring-boot-demo)
+
 
 > spring-boot-vue
 

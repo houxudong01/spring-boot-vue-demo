@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Login from '@/components/Login'
 import Home from "@/components/Home"
 import Regist from "@/components/Regist"
+import UserInfo from "@/components/UserInfo"
 
 Vue.use(Router)
 
@@ -13,15 +14,20 @@ const router = new Router({
       name: 'Home.vue',
       component: Home
     },
+    // {
+    //   path: '/login',
+    //   name: 'Login.vue',
+    //   component: Login
+    // },
+    // {
+    //   path: '/register',
+    //   name: 'Regist.vue',
+    //   component: Regist
+    // },
     {
-      path: '/login',
-      name: 'Login.vue',
-      component: Login
-    },
-    {
-      path: '/register',
-      name: 'Regist.vue',
-      component: Regist
+      path: '/userInfo',
+      name: 'UserInfo.vue',
+      component: UserInfo
     }
   ]
 });

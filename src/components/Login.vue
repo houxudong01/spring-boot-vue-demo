@@ -29,6 +29,7 @@
 <script>
     import { mapMutations } from 'vuex';
     export default {
+        name: 'login',
         data() {
             var validateLoginname = (rule, value, callback) => {
                 if (value === '') {
@@ -56,7 +57,7 @@
             return {
                 name: '',
                 password: '',
-                user: {},
+                user: { username: 'zhangsan' },
                 userList: [],
                 loginName: '',
                 loginPassword: '',
@@ -77,7 +78,7 @@
             }
         },
         mounted() {
-            this.listAll()
+           // this.listAll()
         },
         methods: {
             ...mapMutations(['changeLogin']),
@@ -92,6 +93,7 @@
                     console.log(response.data)
                     if (response.data.code == 200) {
                         console.log('登录成功')
+                        console.log(response.data.data)
                         // console.log(response.data.data.id)
                         // console.log(response.data.data.username)
                         // 将用户token保存到vuex中
@@ -100,7 +102,10 @@
                         //that.changeLogin({ Authorization: that.userToken });
                         // that.$store.commit('changeLogin',JSON.stringify(that.userToken))
                         localStorage.setItem("USER_TOKEN_KEY", that.userToken)
+                        that.loginName = response.data.data.username;
+                        that.sendMsg();
                         that.$router.push({ path: decodeURIComponent('/') });
+                        alert('登录成功')
                     } else {
                         alert(response.data.message)
                     }
@@ -139,19 +144,13 @@
 
                 })
             },
-            // submitForm(formName) {
-            //     this.$refs[formName].validate((valid) => {
-            //         if (valid) {
-            //             alert('submit!');
-            //         } else {
-            //             console.log('error submit!!');
-            //             return false;
-            //         }
-            //     });
-            // },
-            // resetForm(formName) {
-            //     this.$refs[formName].resetFields();
-            // }
+            sendMsg() {
+                //func: 是父组件指定的传数据绑定的函数，this.msg:子组件给父组件传递的数据
+                this.$emit('func', this.loginName)
+            },
+            resetForm(formName) {
+                this.$refs[formName].resetFields();
+            }
         }
 
     }
@@ -159,7 +158,7 @@
 </script>
 
 <style scoped>
-    .demo-ruleForm {
+    /* .demo-ruleForm {
         width: 500px;
     }
 
@@ -167,5 +166,5 @@
         padding-top: 250px;
         text-align: center;
         padding-left: 500px;
-    }
+    } */
 </style>
